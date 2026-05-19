@@ -14,8 +14,9 @@ public class Proyecto {
 	private boolean activo;
 	private List<Tarea> tareas; //Relación 1 a muchos
 	
-	//Constructor vacío
 	public Proyecto () {
+		this.estatus = EstatusProyecto.TO_DO;
+		this.activo = true;
 		this.tareas = new ArrayList<Tarea>();
 	}
 	
@@ -40,6 +41,7 @@ public class Proyecto {
 		this.estatus = estatus;
 		this.fechaCreacion = fechaCreacion;
 		this.fechaActualizacion = fechaActualizacion;
+		this.activo = activo;
 	}
 	
 	/**
@@ -53,11 +55,6 @@ public class Proyecto {
 		
 		long completadas = tareas.stream().filter(Tarea::isCompletada).count();
 		
-		for (Tarea tarea: tareas) {
-			if (tarea.isCompletada()) {
-				//...
-			}
-		}
 		return (double) completadas / tareas.size() * 100;
 	}
 
@@ -119,6 +116,7 @@ public class Proyecto {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+		
 	}
 
 	public void setTareas(List<Tarea> tareas) {

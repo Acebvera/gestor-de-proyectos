@@ -4,6 +4,7 @@
 .settings/
 bin/
 target/
+.metadata/
 
 # Compiled class files
 *.class
@@ -16,6 +17,7 @@ target/
 *.zip
 *.tar.gz
 *.rar
+*.db
 
 # macOS
 .DS_Store

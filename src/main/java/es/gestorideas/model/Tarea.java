@@ -2,6 +2,7 @@ package es.gestorideas.model;
 
 public class Tarea {
 	private int id;
+	private int proyectoId;
 	private String nombre;
 	private String notaAdicional;
 	private PrioridadTarea prioridad;
@@ -10,6 +11,7 @@ public class Tarea {
 	
 	public Tarea () {
 		this.id = 0;
+		this.proyectoId = 0;
 		this.nombre = "";
 		this.notaAdicional = "";
 		this.prioridad = PrioridadTarea.BAJA;
@@ -17,10 +19,21 @@ public class Tarea {
 		this.activo = true;
 	}
 	
-	public Tarea(int id, String nombre, String notaAdicional, 
+	public Tarea (int proyectoId, String nombre, String notaAdicional, PrioridadTarea prioridad) {
+		this();
+		this.proyectoId = proyectoId;
+		this.nombre = nombre;
+		this.notaAdicional = notaAdicional;
+		this.prioridad = prioridad;
+		this.completada = false;
+		this.activo = true;
+	}
+	
+	public Tarea(int id, int proyectoId, String nombre, String notaAdicional, 
 			PrioridadTarea prioridadTarea, boolean completada, boolean activo) {
 		
 		this.id = id;
+		this.proyectoId = proyectoId;
 		this.nombre = nombre;
 		this.notaAdicional = notaAdicional;
 		this.prioridad = prioridadTarea;
@@ -30,6 +43,10 @@ public class Tarea {
 
 	public int getId() {
 		return id;
+	}
+	
+	public int getProyectoId() {
+		return proyectoId;
 	}
 
 	public String getNombre() {
@@ -55,6 +72,10 @@ public class Tarea {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public void setProyectoId(int proyectoId) {
+		this.proyectoId = proyectoId;
+	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -74,6 +95,7 @@ public class Tarea {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+		
 	}
 
 	@Override
@@ -81,11 +103,13 @@ public class Tarea {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Tarea [id=");
 		builder.append(id);
+		builder.append(", proyectoId=");
+		builder.append(proyectoId);
 		builder.append(", nombre=");
 		builder.append(nombre);
 		builder.append(", notaAdicional=");
 		builder.append(notaAdicional);
-		builder.append(", prioridadTarea=");
+		builder.append(", prioridad=");
 		builder.append(prioridad);
 		builder.append(", completada=");
 		builder.append(completada);
@@ -94,6 +118,8 @@ public class Tarea {
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
 	
 	
 	
